@@ -1,0 +1,14 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %span.navbar-brand.mb-0.h1= link_to "TimeHelper", root_path, class: "navbar-brand"
+  .collapse.navbar-collapse.float-right
+    - if current_user
+      %ul.navbar-nav.ml-auto
+        %li.nav-item
+          = link_to edit_user_registration_path, class: 'dropdown-item' do
+            %i.fa.fa-edit
+            %i.fa.fa-user
+            = current_user.email
+        %li.nav-item
+          = link_to "Выйти", destroy_user_session_path, class: "btn btn-sm btn-danger mr-2", method: :delete
+    - else
+      = link_to "Войти", user_session_path, class: "btn btn-sm btn-danger mr-2"
