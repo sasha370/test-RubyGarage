@@ -3,25 +3,32 @@
     .col-10.m-auto
       .card
         .card-header.bg-primary.text-white
+
+          -#ПРОЕКТ
           .fa.fa-list.mr-1
           = project.name
-          = link_to  root_path do   #TODO
+          = link_to  project, method: :delete , data: { confirm: 'Вы уверенны?' } do   #TODO
             .fa.fa-trash.text-white.float-right.ml-2
-          = link_to  root_path do  #TODO
+          = link_to  edit_project_url(project) do  #TODO
             .fa.fa-pencil.text-white.float-right.mr-1
+
+
+        -#ЗАДАЧИ
         .card-footer
-          = form_with(model: @project, local: true) do |form|
+
+          -#Добавить новую
+          = form_with(model: @task, local: true) do |form|
             .input-group
               .input-group-prepend
                 %span.input-group-text
                   .fa.fa-plus
               = form.text_field :name, class: "form-control", placeholder: "Название статьи"
               .input-group-append
-                = form.submit class: "btn btn-success "
+                = form.submit "Add Task", class: "btn btn-success "
 
 
         .card-body
-
+          -#СПИСОК ЗАДАЧ
           %table.table.table-hover.table-bordered
             %tbody
               %tr
