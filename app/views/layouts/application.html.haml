@@ -10,9 +10,6 @@
   %body
     .container
       = render 'layouts/header'
-      %p.notice= notice
-      %p.alert= alert
-      = link_to "New", new_project_path
-      = link_to "Projects", projects_path
+
       = yield
 

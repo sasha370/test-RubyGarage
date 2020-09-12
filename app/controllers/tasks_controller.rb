@@ -2,13 +2,20 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_project
 
+
+  def sort
+    @task = Task.find(params[:task_id])
+    @task.update(task_params)
+    render body: nil
+  end
+
   def index
     # отображаем все проекты, в которых пользователь = текущему пользователю
     @tasks = Task.all.where(project_id: @project)
   end
 
   def show
-     @tasks = Task.all.where(project_id: @project)
+    @tasks = Task.all.where(project_id: @project)
   end
 
   def new
@@ -19,17 +26,27 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @project = Project.find(params[:project_id])
+    @task = Task.create(task_params)
 
-    respond_to do |format|
-      if @task.save
-        format.html { redirect_to root_path, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
+    if @task.save
+      flash[:notice] =  'Задача успешно добавлена'
+      redirect_to root_path
+    else
+      # TODO Прописать Сообщение об ошибках
+      flash[:alert] =  'Ошибка при сохранении задачи'
+      redirect_to 'home/index'
     end
+
+    # respond_to do |format|
+    #   if @task.save
+    #     format.html { redirect_to root_path, notice: 'Task was successfully created.' }
+    #     format.json { render :show, status: :created, location: @task }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @task.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def update
@@ -61,11 +78,11 @@ class TasksController < ApplicationController
   end
 
 
-    def set_task
-      @task = Task.find(params[:id])
-    end
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
-    def task_params
-      params.permit(:name, :status, :project_id, :task, :id)
-    end
+  def task_params
+    params.require(:task).permit(:name, :status, :project_id, :task, :id, :row_order_position)
+  end
 end

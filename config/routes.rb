@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :projects do
-    resources :tasks
+    resources :tasks do
+      put :sort
+    end
   end
+
 end
+
 
