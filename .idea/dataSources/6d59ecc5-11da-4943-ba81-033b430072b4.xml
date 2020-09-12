@@ -11,290 +11,200 @@
     <collation id="4" parent="1" name="NOCASE"/>
     <collation id="5" parent="1" name="RTRIM"/>
     <table id="6" parent="2" name="ar_internal_metadata"/>
-    <table id="7" parent="2" name="project_tasks"/>
-    <table id="8" parent="2" name="projects"/>
-    <table id="9" parent="2" name="schema_migrations"/>
-    <table id="10" parent="2" name="sqlite_master">
+    <table id="7" parent="2" name="projects"/>
+    <table id="8" parent="2" name="schema_migrations"/>
+    <table id="9" parent="2" name="sqlite_master">
       <System>1</System>
     </table>
-    <table id="11" parent="2" name="sqlite_sequence">
+    <table id="10" parent="2" name="sqlite_sequence">
       <System>1</System>
     </table>
-    <table id="12" parent="2" name="tasks"/>
-    <table id="13" parent="2" name="user_projects"/>
-    <table id="14" parent="2" name="users"/>
-    <column id="15" parent="6" name="key">
+    <table id="11" parent="2" name="tasks"/>
+    <table id="12" parent="2" name="users"/>
+    <column id="13" parent="6" name="key">
       <Position>1</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="6" name="value">
+    <column id="14" parent="6" name="value">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
     </column>
-    <column id="17" parent="6" name="created_at">
+    <column id="15" parent="6" name="created_at">
       <Position>3</Position>
       <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="18" parent="6" name="updated_at">
+    <column id="16" parent="6" name="updated_at">
       <Position>4</Position>
       <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="19" parent="6" name="sqlite_autoindex_ar_internal_metadata_1">
+    <index id="17" parent="6" name="sqlite_autoindex_ar_internal_metadata_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>key</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="20" parent="6">
+    <key id="18" parent="6">
       <ColNames>key</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_ar_internal_metadata_1</UnderlyingIndexName>
     </key>
-    <column id="21" parent="7" name="id">
+    <column id="19" parent="7" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="22" parent="7" name="project_id">
+    <column id="20" parent="7" name="name">
       <Position>2</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar|0s</DataType>
     </column>
-    <column id="23" parent="7" name="task_id">
+    <column id="21" parent="7" name="created_at">
       <Position>3</Position>
-      <DataType>integer|0s</DataType>
+      <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="24" parent="7" name="created_at">
+    <column id="22" parent="7" name="updated_at">
       <Position>4</Position>
       <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="25" parent="7" name="updated_at">
+    <column id="23" parent="7" name="user_id">
       <Position>5</Position>
-      <DataType>datetime(6)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="26" parent="7" name="index_project_tasks_on_project_id">
-      <ColNames>project_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <index id="27" parent="7" name="index_project_tasks_on_task_id">
-      <ColNames>task_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <key id="28" parent="7">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="29" parent="7" name="fk_rails_5026d411e7">
-      <ColNames>project_id</ColNames>
-      <RefTableName>projects</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="30" parent="7" name="fk_rails_c4e5e4c7f2">
-      <ColNames>task_id</ColNames>
-      <RefTableName>tasks</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="31" parent="8" name="id">
-      <Position>1</Position>
       <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="32" parent="8" name="name">
-      <Position>2</Position>
-      <DataType>varchar|0s</DataType>
-    </column>
-    <column id="33" parent="8" name="created_at">
-      <Position>3</Position>
-      <DataType>datetime(6)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="34" parent="8" name="updated_at">
-      <Position>4</Position>
-      <DataType>datetime(6)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="35" parent="8">
+    <key id="24" parent="7">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="36" parent="9" name="version">
+    <column id="25" parent="8" name="version">
       <Position>1</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="37" parent="9" name="sqlite_autoindex_schema_migrations_1">
+    <index id="26" parent="8" name="sqlite_autoindex_schema_migrations_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>version</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="38" parent="9">
+    <key id="27" parent="8">
       <ColNames>version</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_schema_migrations_1</UnderlyingIndexName>
     </key>
-    <column id="39" parent="10" name="type">
+    <column id="28" parent="9" name="type">
       <Position>1</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="40" parent="10" name="name">
+    <column id="29" parent="9" name="name">
       <Position>2</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="41" parent="10" name="tbl_name">
+    <column id="30" parent="9" name="tbl_name">
       <Position>3</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="42" parent="10" name="rootpage">
+    <column id="31" parent="9" name="rootpage">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="43" parent="10" name="sql">
+    <column id="32" parent="9" name="sql">
       <Position>5</Position>
       <DataType>text|0s</DataType>
     </column>
-    <column id="44" parent="11" name="name">
+    <column id="33" parent="10" name="name">
       <Position>1</Position>
     </column>
-    <column id="45" parent="11" name="seq">
+    <column id="34" parent="10" name="seq">
       <Position>2</Position>
     </column>
-    <column id="46" parent="12" name="id">
+    <column id="35" parent="11" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="47" parent="12" name="name">
+    <column id="36" parent="11" name="name">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
     </column>
-    <column id="48" parent="12" name="status">
+    <column id="37" parent="11" name="status">
       <Position>3</Position>
       <DataType>boolean|0s</DataType>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="49" parent="12" name="created_at">
+    <column id="38" parent="11" name="created_at">
       <Position>4</Position>
       <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="50" parent="12" name="updated_at">
+    <column id="39" parent="11" name="updated_at">
       <Position>5</Position>
       <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="51" parent="12">
+    <column id="40" parent="11" name="project_id">
+      <Position>6</Position>
+      <DataType>integer|0s</DataType>
+    </column>
+    <key id="41" parent="11">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="52" parent="13" name="id">
+    <column id="42" parent="12" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="53" parent="13" name="project_id">
-      <Position>2</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="54" parent="13" name="user_id">
-      <Position>3</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="55" parent="13" name="created_at">
-      <Position>4</Position>
-      <DataType>datetime(6)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="56" parent="13" name="updated_at">
-      <Position>5</Position>
-      <DataType>datetime(6)|0s</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <index id="57" parent="13" name="index_user_projects_on_project_id">
-      <ColNames>project_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <index id="58" parent="13" name="index_user_projects_on_user_id">
-      <ColNames>user_id</ColNames>
-      <ColumnCollations></ColumnCollations>
-    </index>
-    <key id="59" parent="13">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <foreign-key id="60" parent="13" name="fk_rails_f58e9073ce">
-      <ColNames>project_id</ColNames>
-      <RefTableName>projects</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <foreign-key id="61" parent="13" name="fk_rails_d19c0da646">
-      <ColNames>user_id</ColNames>
-      <RefTableName>users</RefTableName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="62" parent="14" name="id">
-      <Position>1</Position>
-      <DataType>integer|0s</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>null</SequenceIdentity>
-    </column>
-    <column id="63" parent="14" name="email">
+    <column id="43" parent="12" name="email">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="64" parent="14" name="encrypted_password">
+    <column id="44" parent="12" name="encrypted_password">
       <Position>3</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;&apos;</DefaultExpression>
     </column>
-    <column id="65" parent="14" name="reset_password_token">
+    <column id="45" parent="12" name="reset_password_token">
       <Position>4</Position>
       <DataType>varchar|0s</DataType>
     </column>
-    <column id="66" parent="14" name="reset_password_sent_at">
+    <column id="46" parent="12" name="reset_password_sent_at">
       <Position>5</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="67" parent="14" name="remember_created_at">
+    <column id="47" parent="12" name="remember_created_at">
       <Position>6</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="68" parent="14" name="created_at">
+    <column id="48" parent="12" name="created_at">
       <Position>7</Position>
       <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="69" parent="14" name="updated_at">
+    <column id="49" parent="12" name="updated_at">
       <Position>8</Position>
       <DataType>datetime(6)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="70" parent="14" name="index_users_on_email">
+    <index id="50" parent="12" name="index_users_on_email">
       <ColNames>email</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <index id="71" parent="14" name="index_users_on_reset_password_token">
+    <index id="51" parent="12" name="index_users_on_reset_password_token">
       <ColNames>reset_password_token</ColNames>
       <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="72" parent="14">
+    <key id="52" parent="12">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

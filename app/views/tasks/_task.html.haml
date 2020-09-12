@@ -1,0 +1,19 @@
+- @tasks = Task.all.where(project_id: project)
+- @tasks.each do |task|
+  %tr
+    %td.align-middle{:style => "width: 5%"}
+      .form-check
+        %input#defaultCheck1.form-check-input.position-static{:type => "checkbox", :value => "",checked: task.status}
+
+    %td{:style => "width: 80%"}
+      = task.name
+
+    %td.align-middle{:style => "width: 15%"}
+      /TODO  действия на иконки
+      .fa.fa-sort
+      |
+      = link_to edit_project_task_path(project, task) do
+        .fa.fa-pencil
+      |
+      = link_to  project_task_path(project, task), method: :delete , data: { confirm: 'Вы уверенны?' } do
+        .fa.fa-trash

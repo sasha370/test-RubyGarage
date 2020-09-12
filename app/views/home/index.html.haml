@@ -1,4 +1,7 @@
 .row
-  .col-md-10
-    Test  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos excepturi exercitationem labore modi optio tenetur.
+
+  - @projects.each do |project|
+    = render 'projects/project', project: project
+    %br
+
 -#TODO

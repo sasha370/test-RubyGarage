@@ -1,9 +1,10 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [ :show, :edit, :update, :destroy]
 
 
   def index
     @projects = Project.all
+    # @tasks = Task.all.where(project_id: @project)
   end
 
   def new
@@ -11,6 +12,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    # @tasks = Task.where(project_id: @project)
   end
 
   def create
@@ -18,8 +20,8 @@ class ProjectsController < ApplicationController
     @project.user = current_user
     respond_to do |format|
       if @project.save
-        format.html { redirect_to :index, notice: "Проект успешно создан" }
-        format.json { render :index, status: :created, location: @project }
+        format.html { redirect_to root_path, notice: "Проект успешно создан" }
+        format.json { render projects_path, status: :created, location: @project }
       else
         format.html { render :new }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -33,8 +35,8 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to :index, notice: "Проект успешно обновлен" }
-        format.json { render :index, status: :ok, location: @project }
+        format.html { redirect_to projects_path, notice: "Проект успешно обновлен" }
+        format.json { render projects_path, status: :ok, location: @project }
       else
         format.html { render :edit }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -46,7 +48,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to :index, notice: "Проект успешно удален" }
+      format.html { redirect_to projects_path, notice: "Проект успешно удален" }
       format.json { head :no_content }
     end
   end
