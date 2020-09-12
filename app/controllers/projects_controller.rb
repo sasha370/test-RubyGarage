@@ -1,9 +1,10 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [ :show, :edit, :update, :destroy]
 
 
   def index
     @projects = Project.all
+    # @tasks = Task.all.where(project_id: @project)
   end
 
   def new
@@ -11,6 +12,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    # @tasks = Task.where(project_id: @project)
   end
 
   def create
@@ -18,7 +20,7 @@ class ProjectsController < ApplicationController
     @project.user = current_user
     respond_to do |format|
       if @project.save
-        format.html { redirect_to projects_path, notice: "Проект успешно создан" }
+        format.html { redirect_to root_path, notice: "Проект успешно создан" }
         format.json { render projects_path, status: :created, location: @project }
       else
         format.html { render :new }
