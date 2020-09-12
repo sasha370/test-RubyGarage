@@ -3,8 +3,45 @@
     .col-10.m-auto
       .card
         .card-header.bg-primary.text-white
+          .fa.fa-list.mr-1
           = project.name
+          = link_to  root_path do   #TODO
+            .fa.fa-trash.text-white.float-right.ml-2
+          = link_to  root_path do  #TODO
+            .fa.fa-pencil.text-white.float-right.mr-1
         .card-footer
-          зона поиска
+          = form_with(model: @project, local: true) do |form|
+            .input-group
+              .input-group-prepend
+                %span.input-group-text
+                  .fa.fa-plus
+              = form.text_field :name, class: "form-control", placeholder: "Название статьи"
+              .input-group-append
+                = form.submit class: "btn btn-success "
+
+
         .card-body
-          список задач
+
+          %table.table.table-hover.table-bordered
+            %tbody
+              %tr
+                %td.align-middle{:style => "width: 5%"}
+                  .form-check
+                    %input#defaultCheck1.form-check-input.position-static{:type => "checkbox", :value => ""}
+
+                %td{:style => "width: 85%"}
+                  Описание  Задачи
+                  %p Описание  Задачи
+                  %p Описание  Задачи
+
+                %td.align-middle{:style => "width: 10%"}
+                  /TODO  действия на иконки
+                  .fa.fa-sort
+                  |
+                  .fa.fa-pencil
+                  |
+                  .fa.fa-trash
+
+
+
+

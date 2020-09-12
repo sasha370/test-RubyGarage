@@ -1,0 +1,9 @@
+= form_with(model: @project, local: true) do |form|
+
+  .input-group
+    .input-group-prepend
+      %span.input-group-text
+        .fa.fa-plus
+    = form.text_field :name, class: "form-control", placeholder: "Название статьи"
+    .input-group-append
+      = form.submit class: "btn btn-success "
