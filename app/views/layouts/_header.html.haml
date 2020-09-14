@@ -9,6 +9,6 @@
             %i.fa.fa-user
             = current_user.email
         %li.nav-item
-          = link_to "Выйти", destroy_user_session_path, class: "btn btn-sm btn-danger mr-2", method: :delete
+          = link_to "Выйти", destroy_user_session_path, class: "btn btn-sm btn-danger mr-2 text-white", method: :delete
     - else
-      = link_to "Войти", user_session_path, class: "btn btn-sm btn-danger mr-2"
+      = link_to "Войти", user_session_path, class: "btn btn-sm btn-danger mr-2 text-white"

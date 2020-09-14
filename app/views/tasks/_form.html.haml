@@ -1,17 +1,14 @@
-= form_for [@project, @task] do |f|
-  - if @task.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@task.errors.count, "error")} prohibited this task from being saved:"
-      %ul
-        - @task.errors.full_messages.each do |message|
-          %li= message
+-#Форма для добавления новой задачи
+-#Сделана в однострочном виде
 
-  = f.hidden_field :project_id, value: params[:project_id], class: "form-control"
-  .field
-    = f.text_field :name
-  .field
-    = f.check_box :status
-  .actions
-    = f.submit 'Save'
-
-
+= form_for( [project, Task.new]) do |form|
+  .input-group
+    .input-group-prepend
+      %span.input-group-text
+        .fa.fa-plus
+    = form.text_field :name, class: "form-control", placeholder: "Что надо сделать?"
+    -#Скрытым полем передаем ID текущего проекта
+    = form.hidden_field :project_id, value: project.id, class: "form-control"
+    -# = form.check_box :status, value: true
+    .input-group-append
+    = form.submit "Add Task", class: "btn btn-success "

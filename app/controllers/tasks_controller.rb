@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :sort]
+  before_action :set_project, only: [:create]
 
 
   def sort
-    @task = Task.find(params[:task_id])
+    @task = Task.find(params[:id])
     @task.update(task_params)
     render body: nil
   end
@@ -26,27 +26,17 @@ class TasksController < ApplicationController
   end
 
   def create
-    @project = Project.find(params[:project_id])
-    @task = Task.create(task_params)
+    @task = Task.new(task_params)
 
-    if @task.save
-      flash[:notice] =  'Задача успешно добавлена'
-      redirect_to root_path
-    else
-      # TODO Прописать Сообщение об ошибках
-      flash[:alert] =  'Ошибка при сохранении задачи'
-      redirect_to 'home/index'
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to root_path, notice: 'Задача успешно добавлена' }
+        format.json { render :show, status: :created, location: @task }
+      else
+        format.html { redirect_to root_path, alert: 'Ошибка при сохранении задачи' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
     end
-
-    # respond_to do |format|
-    #   if @task.save
-    #     format.html { redirect_to root_path, notice: 'Task was successfully created.' }
-    #     format.json { render :show, status: :created, location: @task }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @task.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   def update
@@ -83,6 +73,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:name, :status, :project_id, :task, :id, :row_order_position)
+    params.require(:task).permit(:name, :status, :project_id, :task, :id, :row_order_position, :task_id)
   end
 end

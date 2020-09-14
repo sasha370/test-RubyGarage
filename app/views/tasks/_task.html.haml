@@ -1,33 +1,13 @@
-
--#ЗАДАЧИ
-- @tasks = Task.all.where(project_id: project).rank(:row_order)
 .card-footer
-  -#Добавить новую
-  = form_for([project, Task.new], method: :post ) do |form|
-
-    .input-group
-      .input-group-prepend
-        %span.input-group-text
-          .fa.fa-plus
-      = form.text_field :name, class: "form-control", placeholder: "Что надо сделать?"
-      = form.hidden_field :project_id, value: project.id, class: "form-control"
-      -# = form.check_box :status, value: true
-      .input-group-append
-        = form.submit "Add Task", class: "btn btn-success "
+  -#Рендерим форму для добавления новой задачи
+  = render 'tasks/form', project: project
 
 
+-#Отрисовываем конкретные задачи внутри текущего Проекта
 .card-body
-  -#СПИСОК ЗАДАЧ
-
   %ul#sortable.list-group.tasks-sortable
-        
-    - flash.each do |name, msg|
-      %div{:class => "alert   #{(name == 'notice') ? "alert-success" : "alert-danger"} %>   alert-dismissible fade show", :role => "alert"}
-        = msg
-        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
-          %span{"aria-hidden" => "true"} ×
-    - @tasks.each do |task|
-      = content_tag "div", id: "task_#{task.id}", data: { model_name: task.class.name.underscore, update_url: project_task_sort_path(project, task)} do
+    - project.tasks.each do |task|
+      = content_tag "div", id: "task_#{task.id}", data: { model_name: task.class.name.underscore, update_url: project_task_sort_path( project,  task )} do
         %li.list-group-item.ui-state-default
           .row
             .col-1
@@ -35,9 +15,8 @@
                 %input#defaultCheck1.form-check-input.position-static{:type => "checkbox", :value => "",checked: task.status}
             .col-9
               = task.name
-              = task.row_order
+              -# = task.row_order
             .col-2.text-right
-              /TODO  действия на иконки
               .fa.fa-sort
               |
               = link_to edit_project_task_path(project, task) do

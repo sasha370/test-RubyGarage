@@ -1,3 +1,7 @@
+-#Отрисовываем все проекты( в каждом проекте - его задачи, в каждой задаче - форма для добавления новой)
+
+%h1 Создать новую Тему
+
 .row
   - @projects.each do |project|
     = render 'projects/project', project: project
