@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :sort]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :set_project, only: [:create]
 
 
   def sort
-    @task = Task.find(params[:id])
+    @task = Task.find(params[:task_id])
     @task.update(task_params)
     render body: nil
   end
@@ -31,6 +31,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         format.html { redirect_to root_path, notice: 'Задача успешно добавлена' }
+        # format.js
         format.json { render :show, status: :created, location: @task }
       else
         format.html { redirect_to root_path, alert: 'Ошибка при сохранении задачи' }
