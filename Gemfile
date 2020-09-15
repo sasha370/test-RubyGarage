@@ -14,7 +14,7 @@ gem "font-awesome-rails"
 gem "haml-rails", "~> 2.0"
 gem 'ranked-model'
 gem 'bootsnap', '>= 1.4.2', require: false
-
+gem 'best_in_place'
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

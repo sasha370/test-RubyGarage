@@ -8,9 +8,10 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 import "bootstrap"
+
 require('jquery')
 require('jquery-ui-dist/jquery-ui');
-
+import "./best_in_place";
 
 // Метод для обработки drag_drop событий внутри курса ( перетаскивание уроков)
 // Ждем полной загрузки турболинков
@@ -39,6 +40,8 @@ $(document).on('turbolinks:load', function () {
         }
     });
 
+    $(".best_in_place").best_in_place();
+    $('.best_in_place').bind("ajax:success", function () {$(this).closest('span').effect('highlight'); });
 
 // Без обновления страницыб взято с RusRails
 //
@@ -52,11 +55,7 @@ $(document).on('turbolinks:load', function () {
         // element.addEventListener("ajax:error", () => {
         //     element.insertAdjacentHTML("beforeend", "<p>ERROR</p>");
         // });
-
     });
-
 });
-
-
 
 

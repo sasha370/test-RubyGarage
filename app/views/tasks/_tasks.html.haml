@@ -18,6 +18,7 @@
 
 -#Отрисовываем конкретные задачи внутри текущего Проекта
 .card-body
+
   %ul#sortable.list-group.tasks-sortable
     - project.tasks.rank(:row_order).each do |task|
       = content_tag "div", id: "task_#{task.id}", data: { model_name: task.class.name.underscore, update_url: project_task_sort_path( project,  task )} do
@@ -28,6 +29,7 @@
                 %input#defaultCheck1.form-check-input.position-static{:type => "checkbox", :value => "",checked: task.status}
             .col-9
               = task.name
+
               -# = task.row_order
             .col-2.text-right
               .fa.fa-sort

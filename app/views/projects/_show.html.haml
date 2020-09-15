@@ -2,7 +2,7 @@
   -#ПРОЕКТ
   .fa.fa-list.mr-1
 
-  = project.name
+  = best_in_place project, :name, :as => :input
   = link_to  project, method: :delete , data: { confirm: 'Вы уверенны?' }, remote: true do
     .fa.fa-trash.text-white.float-right.ml-2
   = link_to  edit_project_url(project), remote: true,  project_id: "edit_project_#{project.id}" do  #TODO
