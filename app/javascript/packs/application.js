@@ -46,6 +46,19 @@ $(document).on('turbolinks:load', function () {
             console.log("stop called when finishing sort of cards");
         }
     });
+
 });
 
+// Без обновления страницыб взято с RusRails
+//
+window.addEventListener("load", () => {
+    const element = document.querySelector("#new-task");
+    element.addEventListener("ajax:success", (event) => {
+        const [_data, _status, xhr] = event.detail;
+        element.insertAdjacentHTML("beforeend", xhr.responseText);
+    });
+    element.addEventListener("ajax:error", () => {
+        element.insertAdjacentHTML("beforeend", "<p>ERROR</p>");
+    });
+});
 

@@ -3,7 +3,7 @@
   -#Форма для добавления новой задачи
   -#Сделана в однострочном виде
 
-  = form_for( [project, Task.new]) do |form|
+  = form_for( [project, Task.new], id: "new_task", remote: true)  do |form|
     .input-group
       .input-group-prepend
         %span.input-group-text
@@ -32,9 +32,9 @@
             .col-2.text-right
               .fa.fa-sort
               |
-              = link_to edit_project_task_path(project, task) do
+              = link_to edit_project_task_path(project, task), remote: true do  #TODO
                 .fa.fa-pencil
               |
-              = link_to  project_task_path(project, task), method: :delete , data: { confirm: 'Вы уверенны?' } do
+              = link_to  project_task_path(project, task), method: :delete , data: { confirm: 'Вы уверенны?' }, remote: true do
                 .fa.fa-trash
 

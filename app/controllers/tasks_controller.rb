@@ -32,7 +32,7 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to root_path, notice: 'Задача успешно добавлена' }
         # format.js
-        format.json { render :show, status: :created, location: @task }
+        format.json { render :new, status: :created, location: @task }
       else
         format.html { redirect_to root_path, alert: 'Ошибка при сохранении задачи' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
