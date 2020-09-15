@@ -49,6 +49,8 @@ $(document).on('turbolinks:load', function () {
 
 });
 
+
+
 // Без обновления страницыб взято с RusRails
 //
 window.addEventListener("load", () => {
@@ -60,5 +62,6 @@ window.addEventListener("load", () => {
     element.addEventListener("ajax:error", () => {
         element.insertAdjacentHTML("beforeend", "<p>ERROR</p>");
     });
+
 });
 

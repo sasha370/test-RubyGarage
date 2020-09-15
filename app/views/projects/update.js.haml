@@ -1,0 +1,1 @@
+document.querySelector("#update_form_#{@project.id}").innerHTML = '#{escape_javascript(render 'projects/show', project: @project)}'
