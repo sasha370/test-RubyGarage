@@ -20,10 +20,10 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         format.html { redirect_to root_path, notice: "Проект успешно создан" }
-        format.json { render root_path, status: :created, location: @project }
+        # format.json { render root_path, status: :created, location: @project }
       else
         format.html { redirect_to root_path, alert: "Ошибка при создании проекта"  }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        # format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -35,11 +35,11 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to root_path, notice: "Проект успешно обновлен" }
-        format.json { render root_path, status: :ok, location: @project }
+        # format.json { render root_path, status: :ok, location: @project }
         format.js
       else
         format.html { redirect_to root_path, alert: "Ошибка при редактировании проекта"   }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        # format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,7 +49,7 @@ class ProjectsController < ApplicationController
     @project.destroy
     respond_to do |format|
       format.html { redirect_to root_path, notice: "Проект успешно удален" }
-      format.json { head :no_content }
+      # format.json { head :no_content }
     end
   end
 

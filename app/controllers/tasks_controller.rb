@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:create, :sort]
+  before_action :set_project, only: [:create]
 
 
   def sort
@@ -30,7 +30,6 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        # format.js
         format.html { redirect_to root_path, notice: 'Задача успешно добавлена' }
         # format.json { render :new, status: :created, location: @task }
       else

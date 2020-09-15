@@ -12,16 +12,14 @@ require('jquery')
 require('jquery-ui-dist/jquery-ui');
 
 
-
 // Метод для обработки drag_drop событий внутри курса ( перетаскивание уроков)
 // Ждем полной загрузки турболинков
 $(document).on('turbolinks:load', function () {
-    // берем элемент с классом .lesson-sortable
     $('.tasks-sortable').sortable({
         cursor: "grabbing",
         //cursorAt: { left: 10 },
         // плейсхолдер прописали в application.scss
-        placeholder: "ui-state-highlight",
+        // placeholder: "ui-state-highlight",
 
         update: function (e, ui) {
             let item = ui.item;
@@ -41,22 +39,24 @@ $(document).on('turbolinks:load', function () {
         }
     });
 
-});
-
-
 
 // Без обновления страницыб взято с RusRails
 //
-window.addEventListener("load", () => {
-    const element = document.querySelector("#new-task");
-    element.addEventListener("ajax:success", (event) => {
-        const [_data, _status, xhr] = event.detail;
-        element.insertAdjacentHTML("beforeend", xhr.responseText);
+    window.addEventListener("load", () => {
+        const element = document.querySelector("#new-task");
+        element.addEventListener("ajax:success", (event) => {
+            const [_data, _status, xhr] = event.detail;
+            element.insertAdjacentHTML("beforeend", xhr.responseText);
+        });
+
+        // element.addEventListener("ajax:error", () => {
+        //     element.insertAdjacentHTML("beforeend", "<p>ERROR</p>");
+        // });
+
     });
 
-    // element.addEventListener("ajax:error", () => {
-    //     element.insertAdjacentHTML("beforeend", "<p>ERROR</p>");
-    // });
-
 });
+
+
+
 
