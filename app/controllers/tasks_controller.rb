@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :set_project, only: [:create]
+  before_action :set_project, only: [:create, :sort]
 
 
   def sort
@@ -30,12 +30,12 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to root_path, notice: 'Задача успешно добавлена' }
         # format.js
-        format.json { render :new, status: :created, location: @task }
+        format.html { redirect_to root_path, notice: 'Задача успешно добавлена' }
+        # format.json { render :new, status: :created, location: @task }
       else
         format.html { redirect_to root_path, alert: 'Ошибка при сохранении задачи' }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        # format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,11 +43,12 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
+        # format.js
         format.html { redirect_to root_path, notice: 'Задача была успешно обновлена' }
-        format.json { render :show, status: :ok, location: @task }
+        # format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, alert: 'Ошибка при обновлении задачи' }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        # format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,8 +56,8 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Task was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to root_path, notice: 'Задача была удалена' }
+      # format.json { head :no_content }
     end
   end
 

@@ -4,7 +4,6 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all.order(created_at: :desc)
-    # @tasks = Task.all.where(project_id: @project)
   end
 
   def new
@@ -13,7 +12,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    # @tasks = Task.where(project_id: @project)
   end
 
   def create
@@ -21,7 +19,6 @@ class ProjectsController < ApplicationController
     @project.user = current_user
     respond_to do |format|
       if @project.save
-        format.js
         format.html { redirect_to root_path, notice: "Проект успешно создан" }
         format.json { render root_path, status: :created, location: @project }
       else

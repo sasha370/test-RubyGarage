@@ -35,6 +35,6 @@
               = link_to edit_project_task_path(project, task), remote: true do  #TODO
                 .fa.fa-pencil
               |
-              = link_to  project_task_path(project, task), method: :delete , data: { confirm: 'Вы уверенны?' }, remote: true do
+              = link_to  project_task_path(project, task), method: :delete , remote: true do
                 .fa.fa-trash
 
