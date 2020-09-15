@@ -1,7 +1,7 @@
 = form_with(model: Project.new, remote: true) do |form|
 
   .input-group
-    = form.text_field :name, class: "form-control", placeholder: "Название проекта"
+    = form.text_field :name, class: "form-control", placeholder: "Название проекта",  :classes  => "task_input_field"
     .input-group-append
       = form.submit class: "btn btn-success "
 %p

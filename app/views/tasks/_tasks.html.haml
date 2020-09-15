@@ -21,22 +21,6 @@
 
   %ul#sortable.list-group.tasks-sortable
     - project.tasks.rank(:row_order).each do |task|
-      = content_tag "div", id: "task_#{task.id}", data: { model_name: task.class.name.underscore, update_url: project_task_sort_path( project,  task )} do
-        %li.list-group-item.ui-state-default
-          .row
-            .col-1
-              .form-check
-                %input#defaultCheck1.form-check-input.position-static{:type => "checkbox", :value => "",checked: task.status}
-            .col-9
-              = task.name
-
-              -# = task.row_order
-            .col-2.text-right
-              .fa.fa-sort
-              |
-              = link_to edit_project_task_path(project, task), remote: true do  #TODO
-                .fa.fa-pencil
-              |
-              = link_to  project_task_path(project, task), method: :delete , remote: true do
-                .fa.fa-trash
+      -#Рендерим каждую задачу отдельно
+      = render 'tasks/task', task: task , project: project
 
