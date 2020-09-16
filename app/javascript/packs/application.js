@@ -42,7 +42,8 @@ $(document).on('turbolinks:load', function () {
     });
 
    // Показ всплывающих подсказок
-    $('.toast').toast('show');
+    $(".toast").toast({ delay: 300000 });
+    $(".toast").toast('show');
 
     // Обработка событий для InLine редактора
     $(".best_in_place").best_in_place();
