@@ -6,10 +6,10 @@
   Save your Time!
   %p
   .row
-    .col-10.m-auto
+    .col-8.m-auto
       -#TODO   Попробовать передалать кнопку в AJAX событие. Кнопку скрыть , а на ее место форму new
-      %p#new_project
-      = link_to "Add TODO List", new_project_path, class: 'btn btn-primary bt-lg text-white', remote: true
+      -#%p#new_project
+      -# = link_to "Add TODO List", new_project_path, class: 'btn btn-primary bt-lg text-white', remote: true
       %p
       = render 'projects/new'
 

@@ -3,16 +3,20 @@
     .row
       .col-1
         .form-check
-          %input.form-check-input.position-static{:type => "checkbox", :value => "",checked: task.status}
+          -#%input.form-check-input.position-static{:type => "checkbox", :value => "", checked: task.status}
+          %span{:style => "font-size: 1.75em;"}
+            = best_in_place task, :status, :as => :checkbox, url: project_task_path(project, task), collection: [raw("&#x2610;"), raw("&#x2611;")]
+
+
       .col-9
         -# = task.name
         = best_in_place task, :name, :as => :input, url: project_task_path(project, task), :classes  => "task_input_field"
         -# = task.row_order
       .col-2.text-right
         .fa.fa-sort
-        |
-        = link_to edit_project_task_path(project, task), remote: true do  #TODO
-          .fa.fa-pencil
+        -#|
+        -#= link_to edit_project_task_path(project, task), remote: true do  #TODO
+        -#  .fa.fa-pencil
         |
         = link_to  project_task_path(project, task), method: :delete , remote: true do
           .fa.fa-trash

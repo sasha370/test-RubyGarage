@@ -1,0 +1,21 @@
+-#.toast.d-flex.justify-content-center.align-items-center{"aria-atomic" => "true", "aria-live" => "assertive", :role => "alert", style: "position: relative; min-height: 200px;"}
+
+.d-flex.justify-content-center.align-items-center{"aria-atomic" => "true", "aria-live" => "polite", :style => "position: fixed; top: 0; right: 0;"}
+  .toast{"aria-atomic" => "true", "aria-live" => "assertive", :role => "alert"}
+
+
+    -#.toast-header
+      -#%strong.mr-auto Message
+    .toast-body
+      %button.ml-2.mb-1.close{"aria-label" => "Close", "data-dismiss" => "toast", :type => "button"}
+        %span{"aria-hidden" => "true"} ×
+      - flash.each do |name, msg|
+        %div{:class => "alert   #{(name == 'notice') ? "alert-success" : "alert-danger"} %>   alert-dismissible fade show", :role => "alert"}
+          = msg
+
+
+-# - flash.each do |name, msg|
+-#  %div{:class => "alert   #{(name == 'notice') ? "alert-success" : "alert-danger"} %>   alert-dismissible fade show", :role => "alert"}
+-#    = msg
+-#    %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+-#      %span{"aria-hidden" => "true"} ×

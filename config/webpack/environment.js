@@ -13,3 +13,4 @@ environment.plugins.append("Provide", new webpack.ProvidePlugin({
 }))
 environment.loaders.prepend('erb', erb)
 module.exports = environment
+

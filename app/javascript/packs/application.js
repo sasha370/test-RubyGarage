@@ -8,10 +8,11 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 import "bootstrap"
-
 require('jquery')
 require('jquery-ui-dist/jquery-ui');
 import "./best_in_place";
+// import 'bootstrap/js/dist/util'
+// import "bootstrap/toasts"
 
 // Метод для обработки drag_drop событий внутри курса ( перетаскивание уроков)
 // Ждем полной загрузки турболинков
@@ -39,6 +40,10 @@ $(document).on('turbolinks:load', function () {
             console.log("stop called when finishing sort of cards");
         }
     });
+
+    // $(".alert" ).fadeOut(3000);
+    // $(".notice" ).fadeOut(3000);
+    $('.toast').toast('show');
 
     $(".best_in_place").best_in_place();
     $('.best_in_place').bind("ajax:success", function () {$(this).closest('span').effect('highlight'); });

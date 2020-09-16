@@ -31,10 +31,10 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         format.html { redirect_to root_path, notice: 'Задача успешно добавлена' }
-        format.json { render :new, status: :created, location: @task }
+        format.json { head :ok }
       else
         format.html { redirect_to root_path, alert: 'Ошибка при сохранении задачи' }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        # format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,8 +46,8 @@ class TasksController < ApplicationController
         format.html { redirect_to root_path, notice: 'Задача была успешно обновлена' }
         format.json { head :ok }
       else
-        format.html { render :edit, alert: 'Ошибка при обновлении задачи' }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, alert: 'Ошибка при обновлении задачи' }
+        # format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,7 +56,7 @@ class TasksController < ApplicationController
     @task.destroy
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'Задача была удалена' }
-      format.json { head :no_content }
+      format.json { head :ok }
     end
   end
 
