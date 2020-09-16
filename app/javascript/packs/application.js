@@ -11,8 +11,8 @@ import "bootstrap"
 require('jquery')
 require('jquery-ui-dist/jquery-ui');
 import "./best_in_place";
-// import 'bootstrap/js/dist/util'
-// import "bootstrap/toasts"
+
+
 
 // Метод для обработки drag_drop событий внутри курса ( перетаскивание уроков)
 // Ждем полной загрузки турболинков
@@ -41,12 +41,14 @@ $(document).on('turbolinks:load', function () {
         }
     });
 
-    // $(".alert" ).fadeOut(3000);
-    // $(".notice" ).fadeOut(3000);
+   // Показ всплывающих подсказок
     $('.toast').toast('show');
 
+    // Обработка событий для InLine редактора
     $(".best_in_place").best_in_place();
     $('.best_in_place').bind("ajax:success", function () {$(this).closest('span').effect('highlight'); });
+
+
 
 // Без обновления страницыб взято с RusRails
 //

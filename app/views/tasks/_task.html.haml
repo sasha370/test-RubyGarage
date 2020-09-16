@@ -1,22 +1,33 @@
 = content_tag "div", id: "task_#{task.id}", data: { model_name: task.class.name.underscore, update_url: project_task_sort_path( project,  task )} do
+
+
   %li.list-group-item.ui-state-default
     .row
       .col-1
         .form-check
-          -#%input.form-check-input.position-static{:type => "checkbox", :value => "", checked: task.status}
+          -#Поле для Статуса, редактируется через best_in_place
           %span{:style => "font-size: 1.75em;"}
             = best_in_place task, :status, :as => :checkbox, url: project_task_path(project, task), collection: [raw("&#x2610;"), raw("&#x2611;")]
 
-
-      .col-9
+      -#Поле для Name , редактируется через best_in_place
+      .col-6
         -# = task.name
         = best_in_place task, :name, :as => :input, url: project_task_path(project, task), :classes  => "task_input_field"
+        -#Проверка порядкового номера
         -# = task.row_order
+
+      -#Поле для даты окончания
+      .col-3
+        - if task.excepted_datetime.present?
+          - if task.excepted_datetime > Time.now
+            = distance_of_time_in_words(Time.now, task.excepted_datetime )
+            left
+          - else
+            .text-danger
+              overdue
+              = distance_of_time_in_words(Time.now, task.excepted_datetime )
       .col-2.text-right
         .fa.fa-sort
-        -#|
-        -#= link_to edit_project_task_path(project, task), remote: true do  #TODO
-        -#  .fa.fa-pencil
         |
         = link_to  project_task_path(project, task), method: :delete , remote: true do
           .fa.fa-trash
