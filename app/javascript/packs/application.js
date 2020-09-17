@@ -41,8 +41,8 @@ $(document).on('turbolinks:load', function () {
         }
     });
 
-   // Показ всплывающих подсказок
-    $(".toast").toast({ delay: 300000 });
+   // Показ всплывающих подсказок Bootstrape
+    $(".toast").toast({ delay: 5000 });
     $(".toast").toast('show');
 
     // Обработка событий для InLine редактора
@@ -51,7 +51,10 @@ $(document).on('turbolinks:load', function () {
 
 
 
-// Без обновления страницыб взято с RusRails
+
+
+
+// Без обновления страницы, взято с RusRails
 //
     window.addEventListener("load", () => {
         const element = document.querySelector("#new-task");
@@ -60,10 +63,9 @@ $(document).on('turbolinks:load', function () {
             element.insertAdjacentHTML("beforeend", xhr.responseText);
         });
 
-        // element.addEventListener("ajax:error", () => {
-        //     element.insertAdjacentHTML("beforeend", "<p>ERROR</p>");
-        // });
+        element.addEventListener("ajax:error", () => {
+            element.insertAdjacentHTML("beforeend", "<p>ERROR</p>");
+        });
     });
 });
-
 

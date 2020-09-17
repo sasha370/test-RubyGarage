@@ -1,18 +1,17 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [ :show, :edit, :update, :destroy]
+  before_action :set_project, only: [ :edit, :update, :destroy]
 
-
-  def index
-    @projects = Project.all.order(created_at: :desc)
-  end
-
-  def new
-    @project = Project.new
-
-  end
-
-  def show
-  end
+  #
+  # def index
+  #   @projects = Project.all.order(created_at: :desc)
+  # end
+  #
+  # def new
+  #   @project = Project.new
+  # end
+  #
+  # def show
+  # end
 
   def create
     @project = Project.new(project_params)
@@ -22,7 +21,7 @@ class ProjectsController < ApplicationController
         format.html { redirect_to root_path, notice: "Проект успешно создан" }
         format.json {  head :ok  }
       else
-        format.html { redirect_to root_path, alert: "Ошибка при создании проекта"  }
+        format.html { redirect_to root_path, alert: "Минимальная длинна сообщения 3 символа"  }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
@@ -38,7 +37,7 @@ class ProjectsController < ApplicationController
         format.json { head :ok }
         format.js
       else
-        format.html { redirect_to root_path, alert: "Ошибка при редактировании проекта"   }
+        format.html { redirect_to root_path, alert: "Минимальная длинна сообщения 3 символа"}
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end

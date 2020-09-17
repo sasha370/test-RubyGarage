@@ -1,25 +1,19 @@
-# README
+Приложение "Список Дел"
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+1) Аутентификация Devise 
+2) CRUD для Проектов ( валидация клиент\сервер)
+3) CRUD для Задач внутри Проектов ( валидация клиент\сервер)
+4) Сортировка Задач перетаскиванием внутри Проекта
+5) Задаче можно назначить дату выполнения (без редактирования, отображается время до окончания или время просрочки)
+6) Задача может имеет статус ( Выполненно\не выполненно)
 
-Things you may want to cover:
+Список дополнительных  GEM-ов:
+- 'devise'
+- "font-awesome-rails"
+- "haml-rails"
+- 'ranked-model'
+- 'bootsnap'
+- 'best_in_place' 
+- 'devise-bootstrap-views'
+ 
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# test-RubyGarage

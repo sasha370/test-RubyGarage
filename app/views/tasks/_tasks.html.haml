@@ -2,12 +2,13 @@
   -#Рендерим форму для добавления новой задачи
   -#Сделана в однострочном виде
 
-  = form_for( [project, Task.new], id: "new_task", remote: true)  do |form|
+  = form_for( [project, Task.new], remote: true)  do |form|
     .input-group
-      .input-group-prepend
+      .input-group-prepend.control-group
         %span.input-group-text
           .fa.fa-plus
-      = form.text_field :name, class: "form-control", placeholder: "Что надо сделать?"
+      = form.text_field :name, :as => :input, class: "form-control  ", placeholder: "Что надо сделать?", id: "name", minlength: "3", maxlength: "100"
+
       = form.datetime_field :excepted_datetime
       -#Скрытым полем передаем ID текущего проекта
       = form.hidden_field :project_id, value: project.id, class: "form-control"

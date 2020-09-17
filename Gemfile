@@ -15,8 +15,6 @@ gem "haml-rails", "~> 2.0"
 gem 'ranked-model'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'best_in_place'
-gem 'bootstrap-datepicker-rails'
-gem 'jquery-timepicker-addon-rails'
 gem 'devise-bootstrap-views'
 
 

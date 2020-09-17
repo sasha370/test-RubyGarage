@@ -1,26 +1,26 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:edit, :update, :destroy]
   before_action :set_project, only: [:create]
 
-
+  # Обработка сортировки, дополнение прописано в JS
   def sort
     @task = Task.find(params[:task_id])
     @task.update(task_params)
     render body: nil
   end
 
-  def index
-    # отображаем все проекты, в которых пользователь = текущему пользователю
-    @tasks = Task.all.where(project_id: @project)
-  end
-
-  def show
-    @tasks = Task.all.where(project_id: @project)
-  end
-
-  def new
-    @task = Task.new
-  end
+  # def index
+  #   # отображаем все проекты, в которых пользователь = текущему пользователю
+  #   @tasks = Task.all.where(project_id: @project)
+  # end
+  #
+  # def show
+  #   @tasks = Task.all.where(project_id: @project)
+  # end
+  #
+  # def new
+  #   @task = Task.new
+  # end
 
   def edit
   end
@@ -33,8 +33,8 @@ class TasksController < ApplicationController
         format.html { redirect_to root_path, notice: 'Задача успешно добавлена' }
         format.json { head :ok }
       else
-        format.html { redirect_to root_path, alert: 'Ошибка при сохранении задачи' }
-        # format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, alert: 'Минимальная длинна сообщения 3 символа' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -46,8 +46,8 @@ class TasksController < ApplicationController
         format.html { redirect_to root_path, notice: 'Задача была успешно обновлена' }
         format.json { head :ok }
       else
-        format.html { redirect_to root_path, alert: 'Ошибка при обновлении задачи' }
-        # format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, alert: 'Минимальная длинна сообщения 3 символа' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end

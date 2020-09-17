@@ -22,7 +22,16 @@ body {
   //color: white;
 }
 
+//Ширина формы ввода
 .task_input_field > form input {
-  width: 60%;
+  width: 100%;
 }
 
+
+//Для Валидации на стороне клиента
+input {
+  border: 2px solid currentcolor;
+}
+input:invalid {
+  border: 2px dashed red;
+}

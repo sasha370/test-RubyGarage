@@ -11,4 +11,6 @@
         %li.nav-item
           = link_to "Выйти", destroy_user_session_path, class: "btn btn-sm btn-danger mr-2 text-white", method: :delete
     - else
-      = link_to "Войти", user_session_path, class: "btn btn-sm btn-danger mr-2 text-white"
+      %ul.navbar-nav.ml-auto
+        %li.nav-item
+        = link_to "Войти", user_session_path, class: "btn btn-sm btn-danger mr-2 text-white"
