@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.user = current_user
+    authorize @project
     respond_to do |format|
       if @project.save
         format.html { redirect_to root_path, notice: "Проект успешно создан" }
@@ -28,9 +29,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    authorize @project
   end
 
   def update
+    authorize @project
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to root_path, notice: "Проект успешно обновлен" }
@@ -45,6 +48,7 @@ class ProjectsController < ApplicationController
 
 
   def destroy
+    authorize @project
     @project.destroy
     respond_to do |format|
       format.html { redirect_to root_path, notice: "Проект успешно удален" }

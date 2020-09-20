@@ -23,11 +23,12 @@ class TasksController < ApplicationController
   # end
 
   def edit
+    authorize @task
   end
 
   def create
     @task = Task.new(task_params)
-
+    authorize @task
     respond_to do |format|
       if @task.save
         format.html { redirect_to root_path, notice: 'Задача успешно добавлена' }
@@ -40,6 +41,7 @@ class TasksController < ApplicationController
   end
 
   def update
+    authorize @task
     respond_to do |format|
       if @task.update(task_params)
         # format.js
@@ -53,6 +55,7 @@ class TasksController < ApplicationController
   end
 
   def destroy
+    authorize @task
     @task.destroy
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'Задача была удалена' }

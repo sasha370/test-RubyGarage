@@ -16,7 +16,7 @@ gem 'ranked-model'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'best_in_place'
 gem 'devise-bootstrap-views'
-
+gem "pundit"     #  Policy
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
