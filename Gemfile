@@ -21,6 +21,8 @@ gem "pundit"     #  Policy
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do
@@ -34,6 +36,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+
 end
 
 group :production do

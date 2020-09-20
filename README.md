@@ -15,5 +15,6 @@
 - 'bootsnap'
 - 'best_in_place' 
 - 'devise-bootstrap-views'
+- 'pundit' (private policy`s)
  
 
