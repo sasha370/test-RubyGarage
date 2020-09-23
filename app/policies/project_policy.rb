@@ -20,11 +20,11 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def create?
-    @user == @record.user
+
   end
 
   def new?
-    @user == @record.user
+
   end
 
   def update?

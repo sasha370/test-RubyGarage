@@ -34,6 +34,8 @@ $(document).on('turbolinks:load', function () {
                 url: item_data.updateUrl,
                 dataType: 'json',
                 data: params
+
+
             });
         },
         stop: function (e, ui) {

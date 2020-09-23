@@ -29,5 +29,5 @@
       .col-1.text-right
         .fa.fa-sort
         |
-        = link_to  project_task_path(project, task), method: :delete , remote: true do
+        = link_to  project_task_path(project, task), method: :delete , id: "delete_task_#{task.id}", remote: true do
           .fa.fa-trash

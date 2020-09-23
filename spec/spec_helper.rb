@@ -13,7 +13,20 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+
+# Add these after require 'rspec/rails'
+ENV['RAILS_ENV'] ||= 'test'
+require File.expand_path('../config/environment', __dir__)
+abort('The Rails environment is running in production mode!') if Rails.env.production?
+
+require 'rspec/rails'
+require 'spec_helper'
+
+
 RSpec.configure do |config|
+
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
@@ -27,6 +40,7 @@ RSpec.configure do |config|
     #     # => "be bigger than 2"
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
+
 
   # rspec-mocks config goes here. You can use an alternate test double
   # library (such as bogus or mocha) by changing the `mock_with` option here.
@@ -93,7 +107,17 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  require 'capybara/rspec'
+  require 'capybara/dsl'
 
+
+  # Add these after require 'rspec/rails'
+  require 'devise'
+
+  # require 'capybara/poltergeist'
+  # Capybara.current_driver = :selenium
+  # Capybara.javascript_driver = :selenium
+  config.include Devise::Test::ControllerHelpers, type: :controller
 
 
 end

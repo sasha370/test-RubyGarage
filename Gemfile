@@ -16,13 +16,20 @@ gem 'ranked-model'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'best_in_place'
 gem 'devise-bootstrap-views'
-gem "pundit"     #  Policy
+gem "pundit" #  Policy
+
+
 
 group :development, :test do
   gem 'sqlite3', '~> 1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
+  gem 'rspec-rails' do
+    %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+      gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
+    end
+  end
   gem 'database_cleaner-active_record'
+
 end
 
 group :development do
@@ -33,7 +40,9 @@ group :development do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
+
+
   gem 'selenium-webdriver'
   gem 'webdrivers'
 

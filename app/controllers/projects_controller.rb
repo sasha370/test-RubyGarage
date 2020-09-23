@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [ :edit, :update, :destroy]
+  before_action :set_project, only: [:edit, :update, :destroy]
 
   #
   # def index
@@ -16,13 +16,13 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.user = current_user
-    authorize @project
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to root_path, notice: "Проект успешно создан" }
-        format.json {  head :ok  }
+        format.json { head :ok }
       else
-        format.html { redirect_to root_path, alert: "Минимальная длинна сообщения 3 символа"  }
+        format.html { redirect_to root_path, alert: "Минимальная длинна сообщения 3 символа" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
@@ -33,14 +33,14 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    authorize @project
+        authorize @project
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to root_path, notice: "Проект успешно обновлен" }
         format.json { head :ok }
         format.js
       else
-        format.html { redirect_to root_path, alert: "Минимальная длинна сообщения 3 символа"}
+        format.html { redirect_to root_path, alert: "Минимальная длинна сообщения 3 символа" }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end

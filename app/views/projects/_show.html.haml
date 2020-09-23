@@ -9,5 +9,5 @@
       = link_to  edit_project_url(project), remote: true,  project_id: "edit_project_#{project.id}" do  #TODO
         .fa.fa-pencil.text-white
       |
-      = link_to  project, method: :delete , data: { confirm: 'Вы уверенны?' }, remote: true do
+      = link_to  project, method: :delete , data: { confirm: 'Вы уверенны?' }, id: "delete_#{project.id}", remote: true do
         .fa.fa-trash.text-white
