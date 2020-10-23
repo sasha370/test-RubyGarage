@@ -1,6 +1,6 @@
 Приложение "Список Дел"
 
-Heroku: https://time-tracker-hq.herokuapp.com/
+Heroku: https://task-manager-hq.herokuapp.com/
 
 1) Аутентификация Devise 
 2) CRUD для Проектов.
