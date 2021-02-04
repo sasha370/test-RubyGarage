@@ -1,18 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :update, :destroy]
 
-  #
-  # def index
-  #   @projects = Project.all.order(created_at: :desc)
-  # end
-  #
-  # def new
-  #   @project = Project.new
-  # end
-  #
-  # def show
-  # end
-
   def create
     @project = Project.new(project_params)
     @project.user = current_user
@@ -46,7 +34,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-
   def destroy
     authorize @project
     @project.destroy
@@ -55,7 +42,6 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
 
   private
 
