@@ -1,16 +1,8 @@
--#Отрисовываем конкретный проект и  рендерим его задачи
-
 .container
   .row
     .col-10.m-auto
       .card
         .card-header.bg-primary.text-white
           = render 'projects/show', project: project
-
-        -#Передаем текущий проект и его задачи
-        = render 'tasks/tasks',   project: project
+          = render 'tasks/tasks',   project: project
   %br
-
-
-
-
