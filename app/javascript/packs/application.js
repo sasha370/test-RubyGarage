@@ -14,28 +14,23 @@ import "./best_in_place";
 
 
 
-// Метод для обработки drag_drop событий внутри курса ( перетаскивание уроков)
-// Ждем полной загрузки турболинков
+// drag_drop 
 $(document).on('turbolinks:load', function () {
     $('.tasks-sortable').sortable({
         cursor: "grabbing",
-        //cursorAt: { left: 10 },
-        // плейсхолдер прописали в application.scss
-        // placeholder: "ui-state-highlight",
-
+       
         update: function (e, ui) {
             let item = ui.item;
             let item_data = item.data();
             let params = {_method: 'put'};
             params[item_data.modelName] = {row_order_position: item.index()}
+   
             // обновляем номера Уроков
             $.ajax({
                 type: 'POST',
                 url: item_data.updateUrl,
                 dataType: 'json',
                 data: params
-
-
             });
         },
         stop: function (e, ui) {
@@ -43,21 +38,12 @@ $(document).on('turbolinks:load', function () {
         }
     });
 
-   // Показ всплывающих подсказок Bootstrape
     $(".toast").toast({ delay: 5000 });
     $(".toast").toast('show');
 
-    // Обработка событий для InLine редактора
     $(".best_in_place").best_in_place();
     $('.best_in_place').bind("ajax:success", function () {$(this).closest('span').effect('highlight'); });
 
-
-
-
-
-
-// Без обновления страницы, взято с RusRails
-//
     window.addEventListener("load", () => {
         const element = document.querySelector("#new-task");
         element.addEventListener("ajax:success", (event) => {
@@ -70,4 +56,3 @@ $(document).on('turbolinks:load', function () {
         });
     });
 });
-
