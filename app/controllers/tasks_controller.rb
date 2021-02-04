@@ -2,25 +2,11 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
   before_action :set_project, only: [:create]
 
-  # Обработка сортировки, дополнение прописано в JS
   def sort
     @task = Task.find(params[:task_id])
     @task.update(task_params)
     render body: nil
   end
-
-  # def index
-  #   # отображаем все проекты, в которых пользователь = текущему пользователю
-  #   @tasks = Task.all.where(project_id: @project)
-  # end
-  #
-  # def show
-  #   @tasks = Task.all.where(project_id: @project)
-  # end
-  #
-  # def new
-  #   @task = Task.new
-  # end
 
   def edit
     authorize @task
@@ -63,14 +49,11 @@ class TasksController < ApplicationController
     end
   end
 
-
   private
 
-  # Т.к. задача привязанна к конкретному проекту, то надо его выбрать из передаваемых params
   def set_project
     @project = Project.find(params[:project_id])
   end
-
 
   def set_task
     @task = Task.find(params[:id])
