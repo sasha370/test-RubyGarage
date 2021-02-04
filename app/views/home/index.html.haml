@@ -1,4 +1,3 @@
-
 .text-center.text-white
   %h1 Simple TODO Lists
   Your can create and manage any things
@@ -7,15 +6,8 @@
   %p
   .row
     .col-8.m-auto
-      -#TODO   Попробовать передалать кнопку в AJAX событие. Кнопку скрыть , а на ее место форму new
-      -#%p#new_project
-      -# = link_to "Add TODO List", new_project_path, class: 'btn btn-primary bt-lg text-white', remote: true
       %p
       = render 'projects/new'
-
-
-
--#Отрисовываем все проекты( в каждом проекте - его задачи, в каждой задаче - форма для добавления новой)
 .row
   - @projects.each do |project|
     = render 'projects/project', project: project
