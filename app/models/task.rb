@@ -4,12 +4,6 @@ class Task < ApplicationRecord
 
   belongs_to :project
 
-  # Подключаем ранжирование внутри Задач
   include RankedModel
-  # Сортируем внутри курса
   ranks :row_order, :with_same => :project_id
-
-
-
-
 end
