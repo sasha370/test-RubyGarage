@@ -1,2 +1,1 @@
--#Грабим Div c ID конкретного проекта и заменяем его значение на форму EDIT
 document.querySelector("#edit_project_#{@project.id}").innerHTML = '#{escape_javascript(render 'projects/edit', project: @project)}'
