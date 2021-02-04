@@ -1,7 +1,4 @@
 .card-footer
-  -#Рендерим форму для добавления новой задачи
-  -#Сделана в однострочном виде
-
   = form_for( [project, Task.new], remote: true)  do |form|
     .input-group
       .input-group-prepend.control-group
@@ -9,19 +6,13 @@
           .fa.fa-plus
       = form.text_field :name, :as => :input, class: "form-control  ", placeholder: "Что надо сделать?", id: "name", minlength: "3", maxlength: "100"
 
-      = form.datetime_field :excepted_datetime
-      -#Скрытым полем передаем ID текущего проекта
+      = form.datetime_field :excepted_datetime      
       = form.hidden_field :project_id, value: project.id, class: "form-control"
 
       .input-group-append
       = form.submit "Add Task", class: "btn btn-success "
 
-
--#Отрисовываем конкретные задачи внутри текущего Проекта
 .card-body
-
   %ul#sortable.list-group.tasks-sortable
     - project.tasks.rank(:row_order).each do |task|
-      -#Рендерим каждую задачу отдельно
       = render 'tasks/task', task: task , project: project
-
