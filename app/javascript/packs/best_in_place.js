@@ -31,7 +31,7 @@ function BestInPlaceEditor(e) {
 }
 
 BestInPlaceEditor.prototype = {
-    // Public Interface Functions //////////////////////////////////////////////
+    // Public Interface Functions /
 
     activate: function () {
         'use strict';
